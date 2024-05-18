@@ -21,6 +21,9 @@ def load_program_need_check():
 def check_program_installed(room):
     VM_USER, VM_PASSWORD = u.getuser_by_id_room(1)
     PATH_VMX = i.get_pathvm_by_room(room)
+    VM_USER = '"' + VM_USER + '"'
+    VM_PASSWORD = '"' + VM_PASSWORD + '"'
+    PATH_VMX = '"' + PATH_VMX + '"'
     for name_computer in PATH_VMX:
         print(f"Checking program in {name_computer}")
         for program_name,program_path_in_ln, program_path in list_program:
@@ -44,6 +47,9 @@ def check_program_installed(room):
 def send_file_to_vm(id,room,link_source,link_in_vm):
     VM_USER, VM_PASSWORD = u.getuser_by_id_room(id)
     PATH_VMX = i.get_pathvm_by_id_and_room(id,room)
+    VM_USER = '"' + VM_USER + '"'
+    VM_PASSWORD = '"' + VM_PASSWORD + '"'
+    PATH_VMX = '"' + PATH_VMX + '"'
     print(f"Sending file to {PATH_VMX}")
     command = s.SCRIPT_CONNECT_TO_SERVER + " " + s.PATH_VMRUN +  ' -gu ' + VM_USER + ' -gp ' + VM_PASSWORD + ' CopyFileFromHostToGuest ' + PATH_VMX + ' ' + link_source + ' ' + link_in_vm
     try:
